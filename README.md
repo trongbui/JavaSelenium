@@ -1,1 +1,1 @@
-# JavaSelenium
+# JavaSelenium for Training Purpose
