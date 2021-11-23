@@ -5,8 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class TestNGTest {
@@ -58,8 +61,10 @@ public class TestNGTest {
         driver.close();
     }
 
+    @Parameters("browser")
     @Test
-    public void createAccount() throws InterruptedException {
+    public void createAccount(String browser) throws InterruptedException {
+        System.out.println(browser);
         System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
         WebDriver driver = new ChromeDriver();
         driver.get("http://automationpractice.com/index.php");
@@ -72,7 +77,7 @@ public class TestNGTest {
 
         WebElement btnSubmitEmail = driver.findElement(By.xpath("//*[@id = 'SubmitCreate']"));
         btnSubmitEmail.click();
-        Thread.sleep(5000);
+        Thread.sleep(10000);
 
 //        WebElement header = driver.findElement(By.tagName("h1"));
 //        String actualHeading = header.getText();
@@ -133,6 +138,8 @@ public class TestNGTest {
 
         WebElement AddressAlias = driver.findElement(By.xpath("//*[@name = 'alias']"));
         AddressAlias.sendKeys(" For future reference");
+
+        driver.close();
     }
 
     @Test
