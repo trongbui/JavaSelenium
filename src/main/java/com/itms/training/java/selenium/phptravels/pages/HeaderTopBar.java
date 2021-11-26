@@ -13,7 +13,8 @@ public class HeaderTopBar extends BasePage{
         super(webDriver);
     }
 
-    public void signUp() {
+    public SignupPage openSignupPage() {
         click(lkSignup);
+        return new SignupPage(webDriver);
     }
 }

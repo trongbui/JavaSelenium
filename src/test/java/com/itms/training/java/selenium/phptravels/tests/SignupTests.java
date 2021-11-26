@@ -1,5 +1,6 @@
 package com.itms.training.java.selenium.phptravels.tests;
 
+import com.itms.training.java.selenium.phptravels.pages.HeaderTopBar;
 import com.itms.training.java.selenium.phptravels.pages.SignupPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import jdk.jfr.Timespan;
@@ -23,7 +24,9 @@ public class SignupTests extends BaseTest {
     @Parameters("browserName")
     @Test
     public void signUpTests(String browserName) throws InterruptedException {
-        SignupPage signupPage = new SignupPage(webDriver);
+        HeaderTopBar headerTopBar = new HeaderTopBar(webDriver);
+
+        SignupPage signupPage = headerTopBar.openSignupPage();
         signupPage.signup("ITMS", "Coaching", "123456789", "itms.coaching@gmail.com", "123456", "Supplier");
     }
 }
