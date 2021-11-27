@@ -9,6 +9,9 @@ public class HeaderTopBar extends BasePage{
     @FindBy(linkText = "Signup")
     private WebElement lkSignup;
 
+    @FindBy(id = "cookie_stop")
+    private WebElement btnGotIt;
+
     public HeaderTopBar(WebDriver webDriver) {
         super(webDriver);
     }
@@ -16,5 +19,9 @@ public class HeaderTopBar extends BasePage{
     public SignupPage openSignupPage() {
         click(lkSignup);
         return new SignupPage(webDriver);
+    }
+
+    public void cookieGotIt() {
+        click(btnGotIt);
     }
 }
