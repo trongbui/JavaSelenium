@@ -1,10 +1,13 @@
-package com.itms.training.java.selenium.phptravels.pages;
+package com.itms.training.java.selenium.phptravels.pages.components;
 
+import com.itms.training.java.selenium.phptravels.pages.BasePage;
+import com.itms.training.java.selenium.phptravels.pages.FlightPage;
+import com.itms.training.java.selenium.phptravels.pages.HotelPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HeaderMenu extends BasePage{
+public class HeaderMenu extends BasePage {
 
     @FindBy(linkText = "Home")
     private WebElement lkHome;
@@ -32,12 +35,12 @@ public class HeaderMenu extends BasePage{
     }
 
     public HotelPage openHotels(){
-        click(lkHotels);
+        scrollClick(lkHotels);
         return new HotelPage(webDriver);
     }
 
     public FlightPage openFlights() {
-        click(lkFlights);
+        scrollClick(lkFlights);
         return new FlightPage(webDriver);
     }
 }

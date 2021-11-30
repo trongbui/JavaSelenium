@@ -1,11 +1,9 @@
 package com.itms.training.java.selenium.phptravels.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignupPage extends BasePage{
 
@@ -52,15 +50,15 @@ public class SignupPage extends BasePage{
     }
 
     public void clickSignup() {
-        click(btnSignup);
+        scrollClick(btnSignup);
     }
 
     public void selectAccountType(String accountType) {
         By by = By.id("select2-account_type-container");
-        click(webDriver.findElement(by));
+        scrollClick(webDriver.findElement(by));
 
         By byAccountType = By.xpath(String.format("//li[.='%s']", accountType));
-        click(webDriver.findElement(byAccountType));
+        scrollClick(webDriver.findElement(byAccountType));
     }
 
     public void signup(String firstname, String lastname, String phone, String email, String password, String accountType) {

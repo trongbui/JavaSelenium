@@ -1,10 +1,12 @@
-package com.itms.training.java.selenium.phptravels.pages;
+package com.itms.training.java.selenium.phptravels.pages.components;
 
+import com.itms.training.java.selenium.phptravels.pages.BasePage;
+import com.itms.training.java.selenium.phptravels.pages.SignupPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HeaderTopBar extends BasePage{
+public class HeaderTopBar extends BasePage {
 
     @FindBy(linkText = "Signup")
     private WebElement lkSignup;
@@ -17,11 +19,11 @@ public class HeaderTopBar extends BasePage{
     }
 
     public SignupPage openSignupPage() {
-        click(lkSignup);
+        scrollClick(lkSignup);
         return new SignupPage(webDriver);
     }
 
     public void cookieGotIt() {
-        click(btnGotIt);
+        scrollClick(btnGotIt);
     }
 }

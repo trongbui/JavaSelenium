@@ -31,7 +31,7 @@ public class LoginPage extends BasePage {
     }
 
     public void clickLogin() {
-        click(btnLogin);
+        scrollClick(btnLogin);
     }
 
     public String getErrorMessage() {

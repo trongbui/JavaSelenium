@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,10 +28,22 @@ public class BasePage {
         PageFactory.initElements(webDriver, this);
     }
 
-    protected void click(WebElement el) {
-        jsExecutor.executeScript("arguments[0].scrollIntoView();", el);
+    protected void scrollClick(WebElement el) {
+        jsExecutor.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", el);
         webDriverWait
                 .until(ExpectedConditions.elementToBeClickable(el))
+                .click();
+    }
+
+    protected void click(WebElement el) {
+        webDriverWait
+                .until(ExpectedConditions.elementToBeClickable(el))
+                .click();
+    }
+
+    protected void click(By by) {
+        webDriverWait
+                .until(ExpectedConditions.elementToBeClickable(by))
                 .click();
     }
 
@@ -38,6 +52,18 @@ public class BasePage {
                 .until(ExpectedConditions.elementToBeClickable(el));
         el.clear();
         el.sendKeys(text);
+    }
+
+    protected void inputText(By by, String text) {
+        WebElement el = webDriverWait
+                .until(ExpectedConditions.elementToBeClickable(by));
+        el.clear();
+        el.sendKeys(text);
+    }
+
+    protected void setText(WebElement el, String text) {
+        webDriverWait.until(ExpectedConditions.visibilityOf(el));
+        jsExecutor.executeScript("arguments[0].setAttribute('value', arguments[1]);", el, text);
     }
 
 
