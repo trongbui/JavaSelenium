@@ -1,0 +1,26 @@
+[
+  {
+  "location": "Singapore",
+  "name": "Rendezvous Hotels",
+  "nights": 2,
+  "price": 93.5,
+  "ratings": 2,
+  "stars": 2
+  },
+  {
+    "location": "Singapore",
+    "name": "New World",
+    "nights": 3,
+    "price": 100,
+    "ratings": 2,
+    "stars": 2
+  },
+  {
+    "location": "Singapore",
+    "name": "New World",
+    "nights": 3,
+    "price": 100,
+    "ratings": 2,
+    "stars": 2
+  }
+]

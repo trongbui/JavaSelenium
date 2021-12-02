@@ -16,7 +16,7 @@ public class HotelTests extends BaseTest {
         String cityName = "Singapore";
         String checkinDate = "04/12/2021";
         String checkoutDate = "06/12/2021";
-        int rooms = 2;
+        int rooms = 3;
         int adults = 3;
         int[] childs = {6, 9};
         String nationality = "Viet Nam";

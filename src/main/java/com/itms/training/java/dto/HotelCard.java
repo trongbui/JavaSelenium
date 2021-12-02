@@ -91,4 +91,18 @@ public class HotelCard {
                 ", nights=" + nights +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        HotelCard hotelCard = (HotelCard) o;
+        return this.getName().equals(hotelCard.getName())
+                && this.getPrice() == hotelCard.getPrice()
+                && this.getLocation().equals(hotelCard.getLocation());
+    }
+
+    public boolean compare(HotelCard hotelCard) {
+        return this.getName().equals(hotelCard.getName())
+                && this.getPrice() == hotelCard.getPrice()
+                && this.getLocation().equals(hotelCard.getLocation());
+    }
 }
