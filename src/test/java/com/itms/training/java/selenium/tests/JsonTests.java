@@ -4,9 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itms.training.java.dto.HotelCard;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.reporters.Files;
 
 import java.io.File;
 import java.io.IOException;
@@ -102,6 +104,20 @@ public class JsonTests {
 
         JSONObject jsonObject = new JSONObject(hotelCard);
         System.out.println(jsonObject);
+    }
+
+    @Test
+    public void readJsonFileToJson() throws IOException {
+        File fJson = new File("src/test/resources/data/hotel_card.json");
+        File fJsonArray = new File("src/test/resources/data/hotel_cards.json");
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        JSONObject jsonObject = new JSONObject(Files.readFile(fJson));
+        JSONArray jsonArray = new JSONArray(Files.readFile(fJsonArray));
+
+        System.out.println(jsonObject);
+        System.out.println(jsonArray.get(0));
+
     }
 
     @Test

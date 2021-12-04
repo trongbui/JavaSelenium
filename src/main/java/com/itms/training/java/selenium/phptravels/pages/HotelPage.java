@@ -1,5 +1,8 @@
 package com.itms.training.java.selenium.phptravels.pages;
 
+import com.itms.training.java.dto.HotelCard;
+import com.itms.training.java.selenium.phptravels.pages.components.FeaturedHotelInfo;
+import com.itms.training.java.selenium.phptravels.pages.components.SearchHotelCardInfo;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +12,9 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class HotelPage extends BasePage{
 
@@ -37,6 +42,9 @@ public class HotelPage extends BasePage{
     @FindBy(xpath = "//button[normalize-space(.)='Search']")
     private WebElement btnSearch;
 
+    @FindBy(xpath = "//div[@class='owl-stage']")
+    private WebElement elFeaturedHotelList;
+
     public HotelPage(WebDriver webDriver) {
         super(webDriver);
     }
@@ -46,9 +54,21 @@ public class HotelPage extends BasePage{
         setCheckInDate(checkInDate);
         setCheckOutDate(checkOutDate);
         setTravellers(rooms, adults, childs, nationality);
-        click(btnSearch);
+//        click(btnSearch);
 
         return new SearchHotelPage(webDriver);
+    }
+
+    public List<HotelCard> getFeaturedHotelList() {
+        List<WebElement> hotelContainers = elFeaturedHotelList.findElements(By.xpath(".//div[@class='owl-item active']/div[contains(@class, 'card-item')]"));
+        List<HotelCard> hotelCards = new ArrayList<>();
+
+        for (WebElement container : hotelContainers) {
+            FeaturedHotelInfo featuredHotelInfo = new FeaturedHotelInfo(webDriver, container);
+            hotelCards.add(featuredHotelInfo.getHotelCard());
+        }
+
+        return hotelCards;
     }
 
     private void specifyCityName(String cityName) {

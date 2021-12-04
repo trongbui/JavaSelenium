@@ -1,0 +1,18 @@
+[
+  {
+    "location": "Singapore",
+    "name": "Rendezvous Hotels",
+    "nights": 2,
+    "price": 93.5,
+    "ratings": 2,
+    "stars": 2
+  },
+  {
+    "location": "Viet Nam",
+    "name": "Rendezvous Hotels",
+    "nights": 2,
+    "price": 93.5,
+    "ratings": 2,
+    "stars": 2
+  }
+]

@@ -97,7 +97,8 @@ public class HotelCard {
         HotelCard hotelCard = (HotelCard) o;
         return this.getName().equals(hotelCard.getName())
                 && this.getPrice() == hotelCard.getPrice()
-                && this.getLocation().equals(hotelCard.getLocation());
+                && this.getLocation().equals(hotelCard.getLocation())
+                && this.getStars() == hotelCard.getStars();
     }
 
     public boolean compare(HotelCard hotelCard) {

@@ -1,0 +1,87 @@
+[
+  {
+    "filters" : {
+      "cityName": "Singapore",
+      "checkinDate" : "04/12/2021",
+      "checkoutDate" : "06/12/2021",
+      "rooms" : 3,
+      "adults" : 3,
+      "childs" : [6, 9, 10],
+      "nationality" : "Viet Nam"},
+    "results" : [
+      {
+        "location": "Singapore",
+        "name": "Rendezvous Hotels",
+        "nights": 2,
+        "price": 93.5,
+        "ratings": 2,
+        "stars": 2
+      }
+    ]
+  },
+  {
+    "filters" : {
+      "cityName": "Singapore",
+      "checkinDate" : "08/12/2021",
+      "checkoutDate" : "18/12/2021",
+      "rooms" : 5,
+      "adults" : 10,
+      "childs" : [6, 9, 12],
+      "nationality" : "Viet Nam"
+    },
+    "results" : [
+      {
+        "location": "Singapore",
+        "name": "Rendezvous Hotels",
+        "nights": 2,
+        "price": 93.5,
+        "ratings": 2,
+        "stars": 2
+      },
+      {
+        "location": "Singapore",
+        "name": "New World",
+        "nights": 3,
+        "price": 100,
+        "ratings": 2,
+        "stars": 2
+      }
+    ]
+  },
+  {
+    "filters" : {
+      "cityName": "Singapore",
+      "checkinDate" : "04/12/2022",
+      "checkoutDate" : "06/12/2022",
+      "rooms" : 1,
+      "adults" : 5,
+      "childs" : [6, 9],
+      "nationality" : "Viet Nam"
+    },
+    "results" : []
+  },
+  {
+    "filters" : {
+      "cityName": "Singapore",
+      "checkinDate" : "04/12/2022",
+      "checkoutDate" : "06/12/2022",
+      "rooms" : 1,
+      "adults" : 5,
+      "childs" : [6, 9],
+      "nationality" : "Viet Nam"
+    },
+    "results" : []
+  },
+  {
+    "filters" : {
+      "cityName": "Singapore",
+      "checkinDate" : "04/12/2022",
+      "checkoutDate" : "06/12/2022",
+      "rooms" : 1,
+      "adults" : 5,
+      "childs" : [6, 9],
+      "nationality" : "Viet Nam"
+    },
+    "results" : []
+  }
+]

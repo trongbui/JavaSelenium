@@ -1,0 +1,26 @@
+[
+  {
+    "accounts" : {
+      "email" : "a@gmail.com",
+      "password" : "123",
+      "remember" : false
+    },
+    "messages" : "Login Success!"
+  },
+  {
+    "accounts" : {
+      "email" : "b@gmail.com",
+      "password" : "1234",
+      "remember" : false
+    },
+    "messages" : "Login Failed!"
+  },
+  {
+    "accounts" : {
+      "email" : "b@gmail.com",
+      "password" : "1234",
+      "remember" : true
+    },
+    "messages" : "Login Failed!"
+  }
+]
