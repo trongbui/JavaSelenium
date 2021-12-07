@@ -114,15 +114,4 @@ public class Verification extends BaseTest{
         Assert.assertEquals("Login",
                 webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by)).getText());
     }
-
-    @Test
-    public void verifyCheckbox() {
-        By by = By.id("rememberchb");
-
-        Assert.assertFalse(webDriver.findElement(by).isSelected());
-
-        webDriver.findElement(by).click();
-
-        Assert.assertTrue(webDriver.findElement(by).isSelected());
-    }
 }
