@@ -13,6 +13,7 @@ import org.testng.reporters.Files;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -115,9 +116,30 @@ public class JsonTests {
         JSONObject jsonObject = new JSONObject(Files.readFile(fJson));
         JSONArray jsonArray = new JSONArray(Files.readFile(fJsonArray));
 
-        System.out.println(jsonObject);
-        System.out.println(jsonArray.get(0));
+        Iterator<String> keys = jsonObject.keys();
+        // {location, name, nights, price, ratings, stars}
 
+        while(keys.hasNext()) {
+            String key = keys.next(); // key = location
+            System.out.println(jsonObject.get(key));
+        }
+
+        System.out.println(jsonObject.get("location"));
+        System.out.println(jsonObject.get("stars"));
+        System.out.println(jsonObject.get("numbers"));
+
+    }
+
+    public boolean compareJson(JSONObject a, JSONObject b) {
+
+        Iterator<String> keys = a.keys();
+        // {location, name, nights, price, ratings, stars}
+
+        while(keys.hasNext()) {
+            String key = keys.next(); // key = location
+            Assert.assertEquals(a.get(key), b.get(key));
+        }
+        return true;
     }
 
     @Test

@@ -96,14 +96,17 @@ public class HotelCard {
     public boolean equals(Object o) {
         HotelCard hotelCard = (HotelCard) o;
         return this.getName().equals(hotelCard.getName())
-                && this.getPrice() == hotelCard.getPrice()
                 && this.getLocation().equals(hotelCard.getLocation())
-                && this.getStars() == hotelCard.getStars();
+                && this.getStars() == hotelCard.getStars()
+                && this.getCurrency().equals(hotelCard.getCurrency())
+                && this.getPrice() == hotelCard.getPrice();
     }
 
     public boolean compare(HotelCard hotelCard) {
         return this.getName().equals(hotelCard.getName())
-                && this.getPrice() == hotelCard.getPrice()
-                && this.getLocation().equals(hotelCard.getLocation());
+                && this.getLocation().equals(hotelCard.getLocation())
+                && this.getStars() == hotelCard.getStars()
+                && this.getCurrency() == hotelCard.getCurrency()
+                && this.getPrice() == hotelCard.getPrice();
     }
 }

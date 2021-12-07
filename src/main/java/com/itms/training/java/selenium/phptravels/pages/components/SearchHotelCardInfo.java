@@ -1,7 +1,10 @@
 package com.itms.training.java.selenium.phptravels.pages.components;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itms.training.java.dto.HotelCard;
 import com.itms.training.java.selenium.phptravels.pages.BasePage;
+import org.json.JSONObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

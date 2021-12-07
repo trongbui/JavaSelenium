@@ -1,13 +1,17 @@
 package com.itms.training.java.selenium.phptravels.tests;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itms.training.java.dto.HotelCard;
+import com.itms.training.java.dto.HotelSearch;
 import com.itms.training.java.selenium.phptravels.pages.SearchHotelPage;
 import com.itms.training.java.selenium.phptravels.pages.components.FeaturedHotelInfo;
 import com.itms.training.java.selenium.phptravels.pages.components.HeaderMenu;
 import com.itms.training.java.selenium.phptravels.pages.HotelPage;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.reporters.Files;
@@ -15,29 +19,40 @@ import org.testng.reporters.Files;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class HotelTests extends BaseTest {
 
     @Test
-    public void searchHotelTest() throws ParseException {
+    public void searchHotelTest() throws ParseException, JsonProcessingException {
         String cityName = "Singapore";
-        String checkinDate = "04/12/2021";
-        String checkoutDate = "06/12/2021";
-        int rooms = 3;
+        String checkinDate = "08/12/2021";
+        String checkoutDate = "09/12/2021";
+        int rooms = 2;
         int adults = 3;
         int[] childs = {6, 9};
         String nationality = "Viet Nam";
+
+        String expectedResult = "[" +
+                "{\"name\":\"Rendezvous Hotels\",\"location\":\"Singapore\",\"stars\":2,\"ratings\":2,\"currency\":\"USD\",\"price\":93.5,\"nights\":1},\n" +
+                "{\"name\":\"Swissotel Le Plaza Basel\",\"location\":\"Singapore\",\"stars\":4,\"ratings\":4,\"currency\":\"USD\",\"price\":88.0,\"nights\":1}\n" +
+                "]";
 
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         HotelPage hotelPage = headerMenu.openHotels();
 
         SearchHotelPage searchHotelPage = hotelPage.quickSearch(cityName, checkinDate, checkoutDate, rooms, adults, childs, nationality);
 
-        List<HotelCard> hotelCards = searchHotelPage.getHotelCardList();
-        for (HotelCard hotelCard: hotelCards) {
-            System.out.println(hotelCard.toString());
-        }
+        List<HotelCard> actualHotelCards = searchHotelPage.getHotelCardList();
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<HotelCard> expectedHotelCards = objectMapper.readValue(expectedResult, new TypeReference<List<HotelCard>>() {});
+
+        Assert.assertEquals(actualHotelCards.size(), expectedHotelCards.size());
+        Assert.assertTrue(actualHotelCards.containsAll(expectedHotelCards));
+        Assert.assertTrue(expectedHotelCards.containsAll(actualHotelCards));
     }
 
     @Test
@@ -78,35 +93,35 @@ public class HotelTests extends BaseTest {
             }
 
             System.out.println("============== End Test ===========");
-
         }
     }
 
     @Test (dataProvider = "Search_Hotels")
     public void featureHotelTestDataProvider(JSONObject filters, JSONArray results) throws ParseException, IOException {
-        System.out.println(filters);
-        System.out.println(results);
-
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         HotelPage hotelPage = headerMenu.openHotels();
+        ObjectMapper objectMapper = new ObjectMapper();
 
-        String cityName = filters.getString("cityName");
-        String checkinDate = filters.getString("checkinDate");
-        String checkoutDate = filters.getString("checkoutDate");
-        int rooms = filters.getInt("rooms");
-        int adults = filters.getInt("adults");
+        HotelSearch hotelSearch = objectMapper.readValue(filters.toString(), HotelSearch.class);
+        List<HotelCard> expectedHotelCard = objectMapper.readValue(results.toString(), new TypeReference<List<HotelCard>>() {});
 
-        JSONArray dataChilds = filters.getJSONArray("childs");
-        int [] childs = new int[dataChilds.length()];
-        for (int j = 0; j < dataChilds.length(); j++ ) {
-            childs[j] = dataChilds.getInt(j);
-        }
-        String nationality = filters.getString("nationality");
-        SearchHotelPage searchHotelPage = hotelPage.quickSearch(cityName, checkinDate, checkoutDate, rooms, adults, childs, nationality);
-
-        System.out.println(results);
-        List<HotelCard> actualResults = hotelPage.getFeaturedHotelList();
-
+//        String cityName = filters.getString("cityName");
+//        String checkinDate = filters.getString("checkinDate");
+//        String checkoutDate = filters.getString("checkoutDate");
+//        int rooms = filters.getInt("rooms");
+//        int adults = filters.getInt("adults");
+//
+//        JSONArray dataChilds = filters.getJSONArray("childs");
+//        int [] childs = new int[dataChilds.length()];
+//        for (int j = 0; j < dataChilds.length(); j++ ) {
+//            childs[j] = dataChilds.getInt(j);
+//        }
+//        String nationality = filters.getString("nationality");
+//        SearchHotelPage searchHotelPage = hotelPage.quickSearch(cityName, checkinDate, checkoutDate, rooms, adults, childs, nationality);
+//
+////        System.out.println(results);
+//        List<HotelCard> actualResults = hotelPage.getFeaturedHotelList();
+//        System.out.println(objectMapper.writeValueAsString(actualResults));
     }
 
     @DataProvider(name = "Search_Hotels")

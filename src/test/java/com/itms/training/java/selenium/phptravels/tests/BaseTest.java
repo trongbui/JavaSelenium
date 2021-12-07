@@ -2,6 +2,7 @@ package com.itms.training.java.selenium.phptravels.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
@@ -12,7 +13,9 @@ import java.time.Duration;
 public class BaseTest {
 
     protected WebDriver webDriver;
+    protected WebDriverWait webDriverWait;
     private final int pageLoadTimeout = 60;
+    private final int timeOut = 60;
 
     @Parameters("browserName")
     @BeforeTest
@@ -21,6 +24,7 @@ public class BaseTest {
         webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(pageLoadTimeout));
         webDriver.manage().window().maximize();
 
+        webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(timeOut));
         webDriver.get("https://www.phptravels.net/login");
 
     }
