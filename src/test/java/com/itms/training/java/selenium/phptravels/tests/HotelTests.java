@@ -4,9 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itms.training.java.dto.HotelCard;
-import com.itms.training.java.dto.HotelSearch;
+import com.itms.training.java.dto.HotelSearchFilter;
 import com.itms.training.java.selenium.phptravels.pages.SearchHotelPage;
-import com.itms.training.java.selenium.phptravels.pages.components.FeaturedHotelInfo;
 import com.itms.training.java.selenium.phptravels.pages.components.HeaderMenu;
 import com.itms.training.java.selenium.phptravels.pages.HotelPage;
 import org.json.JSONArray;
@@ -19,8 +18,6 @@ import org.testng.reporters.Files;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class HotelTests extends BaseTest {
@@ -102,7 +99,7 @@ public class HotelTests extends BaseTest {
         HotelPage hotelPage = headerMenu.openHotels();
         ObjectMapper objectMapper = new ObjectMapper();
 
-        HotelSearch hotelSearch = objectMapper.readValue(filters.toString(), HotelSearch.class);
+        HotelSearchFilter hotelSearch = objectMapper.readValue(filters.toString(), HotelSearchFilter.class);
         List<HotelCard> expectedHotelCard = objectMapper.readValue(results.toString(), new TypeReference<List<HotelCard>>() {});
 
 //        String cityName = filters.getString("cityName");
@@ -110,7 +107,7 @@ public class HotelTests extends BaseTest {
 //        String checkoutDate = filters.getString("checkoutDate");
 //        int rooms = filters.getInt("rooms");
 //        int adults = filters.getInt("adults");
-//
+
 //        JSONArray dataChilds = filters.getJSONArray("childs");
 //        int [] childs = new int[dataChilds.length()];
 //        for (int j = 0; j < dataChilds.length(); j++ ) {
@@ -122,6 +119,19 @@ public class HotelTests extends BaseTest {
 ////        System.out.println(results);
 //        List<HotelCard> actualResults = hotelPage.getFeaturedHotelList();
 //        System.out.println(objectMapper.writeValueAsString(actualResults));
+    }
+
+    @Test (dataProvider = "Search_Object_Hotels")
+    public void featureHotelTestDataProviderObject(HotelSearchFilter filter, List<HotelCard> expectedHotelCards) throws ParseException {
+        HeaderMenu headerMenu = new HeaderMenu(webDriver);
+        HotelPage hotelPage = headerMenu.openHotels();
+
+        SearchHotelPage searchHotelPage = hotelPage.quickSearch(filter);
+        List<HotelCard> actualHotelCards = hotelPage.getFeaturedHotelList();
+
+        System.out.println(actualHotelCards);
+        System.out.println(expectedHotelCards);
+
     }
 
     @DataProvider(name = "Search_Hotels")
@@ -138,6 +148,30 @@ public class HotelTests extends BaseTest {
             JSONArray expectedResults = data.getJSONArray("results");
 
             Object [] tc = new Object[]{filters, expectedResults};
+            array[i] = tc;
+        }
+
+        return array;
+    }
+
+    @DataProvider(name = "Search_Object_Hotels")
+    public Object[][] searchObjectHotels() throws IOException {
+        File fileSearchDataDriven = new File("src/test/resources/data/search_hotels.json");
+        ObjectMapper mapper = new ObjectMapper();
+
+        JSONArray testData = new JSONArray(Files.readFile(fileSearchDataDriven));
+        Object [][] array = new Object[testData.length()][];
+
+        for (int i = 0; i < testData.length(); i++) {
+
+            JSONObject data = (JSONObject) testData.get(i);
+            JSONObject filters = data.getJSONObject("filters");
+            JSONArray expectedResults = data.getJSONArray("results");
+
+            HotelSearchFilter filter = mapper.readValue(data.getJSONObject("filters").toString(), HotelSearchFilter.class);
+            List<HotelCard> hotelCards = mapper.readValue(data.getJSONArray("results").toString(), new TypeReference<List<HotelCard>>() {});
+
+            Object [] tc = new Object[]{filter, hotelCards};
             array[i] = tc;
         }
 

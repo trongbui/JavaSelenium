@@ -1,6 +1,6 @@
 package com.itms.training.java.dto;
 
-public class HotelSearch {
+public class HotelSearchFilter {
 
     String cityName;
     String checkInDate;
@@ -10,7 +10,9 @@ public class HotelSearch {
     int[] childs;
     String nationality;
 
-    public HotelSearch(String cityName, String checkInDate, String checkOutDate, int rooms, int adults, int[] childs, String nationality) {
+    public HotelSearchFilter(){}
+
+    public HotelSearchFilter(String cityName, String checkInDate, String checkOutDate, int rooms, int adults, int[] childs, String nationality) {
         this.cityName = cityName;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;

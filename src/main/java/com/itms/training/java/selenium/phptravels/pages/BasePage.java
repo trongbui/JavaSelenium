@@ -35,6 +35,10 @@ public class BasePage {
                 .click();
     }
 
+    protected void scrollToElement(WebElement el) {
+
+    }
+
     protected void click(WebElement el) {
         webDriverWait
                 .until(ExpectedConditions.elementToBeClickable(el))

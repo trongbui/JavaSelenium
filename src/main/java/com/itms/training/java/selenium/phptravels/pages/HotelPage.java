@@ -1,6 +1,7 @@
 package com.itms.training.java.selenium.phptravels.pages;
 
 import com.itms.training.java.dto.HotelCard;
+import com.itms.training.java.dto.HotelSearchFilter;
 import com.itms.training.java.selenium.phptravels.pages.components.FeaturedHotelInfo;
 import com.itms.training.java.selenium.phptravels.pages.components.SearchHotelCardInfo;
 import org.openqa.selenium.By;
@@ -57,6 +58,18 @@ public class HotelPage extends BasePage{
 //        click(btnSearch);
 
         return new SearchHotelPage(webDriver);
+    }
+
+    public SearchHotelPage quickSearch(HotelSearchFilter filter) throws ParseException {
+        return quickSearch(
+                filter.getCityName(),
+                filter.getCheckInDate(),
+                filter.getCheckOutDate(),
+                filter.getRooms(),
+                filter.getAdults(),
+                filter.getChilds(),
+                filter.getNationality()
+        );
     }
 
     public List<HotelCard> getFeaturedHotelList() {

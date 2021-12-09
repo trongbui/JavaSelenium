@@ -1,0 +1,26 @@
+[
+  {
+    "firstName" : "",
+    "lastName" : "Coaching",
+    "phone" : "123456789",
+    "email" : "itms.Customer.coaching@gmail.com",
+    "password" : "123456",
+    "accountType" : "Customer"
+  },
+  {
+    "firstName" : "ITMS",
+    "lastName" : "",
+    "phone" : "123456789",
+    "email" : "itms.Supplier.coaching@gmail.com",
+    "password" : "123456",
+    "accountType" : "Supplier"
+  },
+  {
+    "firstName" : "ITMS",
+    "lastName" : "Coaching",
+    "phone" : "",
+    "email" : "itms.Agent.coaching@gmail.com",
+    "password" : "123456",
+    "accountType" : "Agent"
+  }
+]

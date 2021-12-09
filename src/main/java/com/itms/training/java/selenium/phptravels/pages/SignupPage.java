@@ -1,9 +1,11 @@
 package com.itms.training.java.selenium.phptravels.pages;
 
+import com.itms.training.java.dto.Account;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class SignupPage extends BasePage{
 
@@ -53,6 +55,30 @@ public class SignupPage extends BasePage{
         scrollClick(btnSignup);
     }
 
+    public WebElement getTbFirstName() {
+        return tbFirstName;
+    }
+
+    public WebElement getTbLastName() {
+        return tbLastName;
+    }
+
+    public WebElement getTbPhone() {
+        return tbPhone;
+    }
+
+    public WebElement getTbEmail() {
+        return tbEmail;
+    }
+
+    public WebElement getTbPassword() {
+        return tbPassword;
+    }
+
+    public WebElement getBtnSignup() {
+        return btnSignup;
+    }
+
     public void selectAccountType(String accountType) {
         By by = By.id("select2-account_type-container");
         scrollClick(webDriver.findElement(by));
@@ -70,5 +96,39 @@ public class SignupPage extends BasePage{
         selectAccountType(accountType);
 
         clickSignup();
+    }
+
+    public String getFirstNameRequiredMessage() {
+        return webDriverWait
+                .until(ExpectedConditions.visibilityOf(tbFirstName))
+                .getAttribute("validationMessage");
+    }
+
+    public String getLastNameRequiredMessage() {
+        return webDriverWait
+                .until(ExpectedConditions.visibilityOf(tbLastName))
+                .getAttribute("validationMessage");
+    }
+
+    public String getPhoneRequiredMessage() {
+        return webDriverWait
+                .until(ExpectedConditions.visibilityOf(tbPhone))
+                .getAttribute("validationMessage");
+    }
+
+    public String getRequiredMessage(WebElement el) {
+        return webDriverWait
+                .until(ExpectedConditions.visibilityOf(el))
+                .getAttribute("validationMessage");
+    }
+
+    public void signup(Account account) {
+        signup(
+                account.getFirstName(),
+                account.getLastName(),
+                account.getPhone(),
+                account.getEmail(),
+                account.getPassword(),
+                account.getAccountType());
     }
 }
