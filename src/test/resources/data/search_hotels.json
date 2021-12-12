@@ -2,93 +2,13 @@
   {
     "filters" : {
       "cityName": "Singapore",
-      "checkinDate" : "04/12/2021",
-      "checkoutDate" : "06/12/2021",
+      "checkInDate" : "04/12/2021",
+      "checkOutDate" : "06/12/2021",
       "rooms" : 3,
       "adults" : 3,
       "childs" : [6, 9, 10],
       "nationality" : "Viet Nam"},
     "results" :[
-      {
-        "currency": "USD",
-        "location": "Singapore",
-        "name": "Rendezvous Hotels",
-        "nights": 0,
-        "price": 85.0,
-        "ratings": 0,
-        "stars": 2
-      },
-      {
-        "currency": "USD",
-        "location": "Singapore",
-        "name": "Swissotel Le Plaza Basel",
-        "nights": 0,
-        "price": 80.0,
-        "ratings": 0,
-        "stars": 4
-      },
-      {
-        "currency": "USD",
-        "location": "Dubai",
-        "name": "Hyatt Regency Perth",
-        "nights": 0,
-        "price": 150.0,
-        "ratings": 0,
-        "stars": 3
-      }
-    ]
-  },
-  {
-    "filters" : {
-      "cityName": "Singapore",
-      "checkinDate" : "08/12/2021",
-      "checkoutDate" : "18/12/2021",
-      "rooms" : 5,
-      "adults" : 10,
-      "childs" : [6, 9, 12],
-      "nationality" : "Viet Nam"
-    },
-    "results" : [
-      {
-        "currency": "USD",
-        "location": "Singapore",
-        "name": "Rendezvous Hotels",
-        "nights": 0,
-        "price": 85.0,
-        "ratings": 0,
-        "stars": 2
-      },
-      {
-        "currency": "USD",
-        "location": "Singapore",
-        "name": "Swissotel Le Plaza Basel",
-        "nights": 0,
-        "price": 80.0,
-        "ratings": 0,
-        "stars": 4
-      },
-      {
-        "currency": "USD",
-        "location": "Dubai",
-        "name": "Hyatt Regency Perth",
-        "nights": 0,
-        "price": 150.0,
-        "ratings": 0,
-        "stars": 3
-      }
-    ]
-  },
-  {
-    "filters" : {
-      "cityName": "Singapore",
-      "checkinDate" : "04/12/2022",
-      "checkoutDate" : "06/12/2022",
-      "rooms" : 1,
-      "adults" : 5,
-      "childs" : [6, 9],
-      "nationality" : "Viet Nam"
-    },
-    "results" : [
       {
         "currency": "USD",
         "location": "Singapore",
