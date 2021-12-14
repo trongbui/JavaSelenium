@@ -36,7 +36,11 @@ public class BasePage {
     }
 
     protected void scrollToElement(WebElement el) {
+        jsExecutor.executeScript("arguments[0].scrollIntoView({block: 'center', inline: 'nearest'});", el);
+    }
 
+    protected void scrollBy(int x, int y) {
+        jsExecutor.executeScript("window.scrollBy(arguments[0],arguments[1])", x, y);
     }
 
     protected void click(WebElement el) {

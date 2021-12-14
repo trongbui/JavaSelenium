@@ -6,10 +6,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itms.training.java.dto.FilterResult;
 import com.itms.training.java.dto.HotelCard;
 import com.itms.training.java.dto.HotelSearchFilter;
+import com.itms.training.java.selenium.phptravels.pages.HotelPage;
 import com.itms.training.java.selenium.phptravels.pages.SearchHotelPage;
 import com.itms.training.java.selenium.phptravels.pages.components.HeaderMenu;
-import com.itms.training.java.selenium.phptravels.pages.HotelPage;
-import com.itms.training.java.utils.TestAssert;
+import com.itms.training.java.selenium.phptravels.tests.dataprovider.HotelCardDataProviders;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.testng.Assert;
@@ -20,7 +20,6 @@ import org.testng.reporters.Files;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HotelTests extends BaseTest {
@@ -32,9 +31,11 @@ public class HotelTests extends BaseTest {
      */
     @Test
     public void searchHotelTest() throws ParseException, JsonProcessingException {
+        webDriver.get("https://www.phptravels.net/login");
+
         String cityName = "Singapore";
-        String checkinDate = "12/12/2021";
-        String checkoutDate = "13/12/2021";
+        String checkinDate = "16/12/2021";
+        String checkoutDate = "17/12/2021";
         int rooms = 2;
         int adults = 3;
         int[] childs = {6, 9};
@@ -48,20 +49,30 @@ public class HotelTests extends BaseTest {
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         HotelPage hotelPage = headerMenu.openHotels();
 
+        // Perform search
         SearchHotelPage searchHotelPage = hotelPage.quickSearch(cityName, checkinDate, checkoutDate, rooms, adults, childs, nationality);
-
+        // Read HotelCard information from HotelSearch result page
         List<HotelCard> actualHotelCards = searchHotelPage.getHotelCardList();
 
         ObjectMapper objectMapper = new ObjectMapper();
+        // Get HotelCard information from expected result
         List<HotelCard> expectedHotelCards = objectMapper.readValue(expectedResult, new TypeReference<List<HotelCard>>() {});
 
+        // Verify expected result list and actual result list
         Assert.assertEquals(actualHotelCards.size(), expectedHotelCards.size());
         Assert.assertTrue(actualHotelCards.containsAll(expectedHotelCards));
         Assert.assertTrue(expectedHotelCards.containsAll(actualHotelCards));
     }
 
+    /**
+     * FeatureHotels list verification with in-line data-driven
+     * @throws ParseException
+     * @throws IOException
+     */
     @Test
     public void featureHotelTest() throws ParseException, IOException {
+        webDriver.get("https://www.phptravels.net/login");
+
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         HotelPage hotelPage = headerMenu.openHotels();
 
@@ -101,8 +112,17 @@ public class HotelTests extends BaseTest {
         }
     }
 
+    /**
+     * FeatureHotel list verification with data-provider with filters and results as JSONObject
+     * @param filters
+     * @param results
+     * @throws ParseException
+     * @throws IOException
+     */
     @Test (dataProvider = "Search_Hotels")
     public void featureHotelTestDataProvider(JSONObject filters, JSONArray results) throws ParseException, IOException {
+        webDriver.get("https://www.phptravels.net/login");
+
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         HotelPage hotelPage = headerMenu.openHotels();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -129,8 +149,17 @@ public class HotelTests extends BaseTest {
         System.out.println(objectMapper.writeValueAsString(actualResults));
     }
 
+    /**
+     * FeatureHotel list verification with data-provider with filters and results as Java Object
+     * @param filter
+     * @param expectedHotelCards
+     * @throws ParseException
+     * @throws JsonProcessingException
+     */
     @Test (dataProvider = "Search_Object_Hotels")
     public void featureHotelTestDataProviderObject(HotelSearchFilter filter, List<HotelCard> expectedHotelCards) throws ParseException, JsonProcessingException {
+        webDriver.get("https://www.phptravels.net/login");
+
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         HotelPage hotelPage = headerMenu.openHotels();
 
@@ -143,21 +172,18 @@ public class HotelTests extends BaseTest {
         // Assert 2 HotelCard List by Object
         Assert.assertEquals(actualHotelCards.size(), expectedHotelCards.size());
         Assert.assertTrue(expectedHotelCards.containsAll(actualHotelCards));
-
-//        // Convert to JSON List to practice comparing 2 JSON Lists
-//        ObjectMapper mapper = new ObjectMapper();
-//        List<JSONObject> actualHotelJsonList = new ArrayList<>();
-//        List<JSONObject> expectedHotelJsonList = new ArrayList<>();
-//        for (int i = 0; i < actualHotelCards.size(); i++) {
-//            actualHotelJsonList.add(new JSONObject(mapper.writeValueAsString(actualHotelCards.get(i))));
-//            expectedHotelJsonList.add(new JSONObject(mapper.writeValueAsString(expectedHotelCards.get(i))));
-//        }
-//
-//        Assert.assertTrue(TestAssert.isHotelJsonListEqual(actualHotelJsonList, expectedHotelJsonList));
     }
 
-    @Test (dataProvider = "FilterResult")
+    /**
+     * FeatureHotel list verification with data-provider with filters and results as Java Object
+     * @param filterResult
+     * @throws ParseException
+     * @throws JsonProcessingException
+     */
+    @Test (dataProvider = "Filter_Result", dataProviderClass = HotelCardDataProviders.class)
     public void featureHotelTestDataProviderFilterResult(FilterResult filterResult) throws ParseException, JsonProcessingException {
+        webDriver.get("https://www.phptravels.net/login");
+
         HeaderMenu headerMenu = new HeaderMenu(webDriver);
         HotelPage hotelPage = headerMenu.openHotels();
 
@@ -168,63 +194,5 @@ public class HotelTests extends BaseTest {
         // Assert 2 HotelCard List by Object
         Assert.assertEquals(actualHotelCards.size(), expectedHotelCards.size());
         Assert.assertTrue(expectedHotelCards.containsAll(actualHotelCards));
-    }
-
-    @DataProvider(name = "Search_Hotels")
-    public Object[][] searchHotels() throws IOException {
-
-        File fileSearchDataDriven = new File("src/test/resources/data/search_hotels.json");
-        JSONArray testData = new JSONArray(Files.readFile(fileSearchDataDriven));
-        Object [][] array = new Object[testData.length()][];
-
-        for (int i = 0; i < testData.length(); i++) {
-
-            JSONObject data = (JSONObject) testData.get(i);
-            JSONObject filters = data.getJSONObject("filters");
-            JSONArray expectedResults = data.getJSONArray("results");
-
-            Object [] tc = new Object[]{filters, expectedResults};
-            array[i] = tc;
-        }
-
-        return array;
-    }
-
-    @DataProvider(name = "Search_Object_Hotels")
-    public Object[][] searchObjectHotels() throws IOException {
-        File fileSearchDataDriven = new File("src/test/resources/data/search_hotels.json");
-        ObjectMapper mapper = new ObjectMapper();
-
-        JSONArray testData = new JSONArray(Files.readFile(fileSearchDataDriven));
-        Object [][] array = new Object[testData.length()][];
-
-        for (int i = 0; i < testData.length(); i++) {
-
-            JSONObject data = (JSONObject) testData.get(i);
-            JSONObject filters = data.getJSONObject("filters");
-            JSONArray expectedResults = data.getJSONArray("results");
-
-            HotelSearchFilter filter = mapper.readValue(data.getJSONObject("filters").toString(), HotelSearchFilter.class);
-            List<HotelCard> hotelCards = mapper.readValue(data.getJSONArray("results").toString(), new TypeReference<List<HotelCard>>() {});
-
-            Object [] tc = new Object[]{filter, hotelCards};
-            array[i] = tc;
-        }
-
-        return array;
-    }
-
-    @DataProvider(name = "FilterResult")
-    public Object[][] filterResult() throws IOException {
-        File fileSearchDataDriven = new File("src/test/resources/data/search_hotels.json");
-        ObjectMapper mapper = new ObjectMapper();
-
-        List<FilterResult> filterResults = mapper.readValue(fileSearchDataDriven, new TypeReference<List<FilterResult>>() {});
-        Object[][] array = new Object[filterResults.size()][];
-        for (int i = 0; i < filterResults.size(); i++) {
-            Object[] fr = new Object[] {filterResults.get(i)};
-            array[i] = fr;
-        }
-        return array;
     }
 }

@@ -98,6 +98,16 @@ public class SignupPage extends BasePage{
         clickSignup();
     }
 
+    public void signup(Account account) {
+        signup(
+                account.getFirstName(),
+                account.getLastName(),
+                account.getPhone(),
+                account.getEmail(),
+                account.getPassword(),
+                account.getAccountType());
+    }
+
     public String getFirstNameRequiredMessage() {
         return webDriverWait
                 .until(ExpectedConditions.visibilityOf(tbFirstName))
@@ -120,15 +130,5 @@ public class SignupPage extends BasePage{
         return webDriverWait
                 .until(ExpectedConditions.visibilityOf(el))
                 .getAttribute("validationMessage");
-    }
-
-    public void signup(Account account) {
-        signup(
-                account.getFirstName(),
-                account.getLastName(),
-                account.getPhone(),
-                account.getEmail(),
-                account.getPassword(),
-                account.getAccountType());
     }
 }

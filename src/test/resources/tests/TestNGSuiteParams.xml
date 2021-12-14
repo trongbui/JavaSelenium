@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests"  name="Params Tests">
+    <parameter name="suite-param-1" value="1"></parameter>
+    <parameter name="suite-param-2" value="2"></parameter>
+    <parameter name="browserName" value="chrome"></parameter>
+
+    <test name="Test 1" >
+        <parameter name="test-param-A" value="A" />
+        <parameter name="test-param-B" value="B" />
+        <parameter name="browserName" value="firefox"></parameter>
+
+        <classes>
+            <class name="com.itms.training.java.selenium.tests.TestNGTest1">
+                    <methods>
+                        <include name="test1"></include>
+                    </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+    <test name="Test 2">
+        <parameter name="test-param-C" value="C"></parameter>
+        <parameter name="test-param-D" value="D"></parameter>
+        <parameter name="browserName" value="edge"></parameter>
+
+        <classes>
+            <class name="com.itms.training.java.selenium.tests.TestNGTest2"></class>
+            <class name="com.itms.training.java.selenium.tests.TestNGTest3"></class>
+        </classes>
+    </test>
+</suite> <!-- Suite -->

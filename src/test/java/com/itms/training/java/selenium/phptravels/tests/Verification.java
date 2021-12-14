@@ -5,12 +5,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.WeakHashMap;
 import java.util.regex.Pattern;
 
 public class Verification extends BaseTest{
 
 
+    /**
+     * Title is normally verified when moving to a new page to ensure that the expected page can be loaded
+     */
     @Test
     public void verifyTitle() {
         String title = "Login - PHPTRAVELS";
@@ -28,6 +30,9 @@ public class Verification extends BaseTest{
         Assert.assertNotEquals(otherTitle, webDriver.getTitle());
     }
 
+    /**
+     * Verify the text displayed on the specific element
+     */
     @Test
     public void verifyVisualText() {
         String visualText = "Please enter your account credentials below";
@@ -42,6 +47,9 @@ public class Verification extends BaseTest{
                 webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by)).getText());
     }
 
+    /**
+     * Verify the instruction text displayed in a textbox
+     */
     @Test
     public void verifyPlaceHolder() {
         String placeholderText = "Email";
@@ -56,6 +64,9 @@ public class Verification extends BaseTest{
         Assert.assertEquals(placeholderText, webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by)).getAttribute("placeholder"));
     }
 
+    /**
+     * Verify the input text in a textbox. The text is get via 'value' attribute and will not be found from inspection
+     */
     @Test
     public void verifyValueText() {
         String text = "itms";
@@ -76,6 +87,10 @@ public class Verification extends BaseTest{
         //===========================
     }
 
+    /**
+     * Verify the validation message of a textbox. The message is saved in 'validationMessage' attribute and will not
+     * be found from inspection
+     */
     @Test
     public void verifyValidationMessage() {
         String text = "Please fill out this field.";
@@ -95,6 +110,9 @@ public class Verification extends BaseTest{
                 webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(by)).getAttribute("validationMessage"));
     }
 
+    /**
+     * Verify the value in a password textbox
+     */
     @Test
     public void verifyPassword() {
         By by = By.name("password");
@@ -107,6 +125,9 @@ public class Verification extends BaseTest{
         webDriverWait.until(ExpectedConditions.attributeToBe(by, "value", text));
     }
 
+    /**
+     * Verify text displayed on a button
+     */
     @Test
     public void verifyButtonText() {
         By by = By.xpath("//button[normalize-space(.)='Login']");

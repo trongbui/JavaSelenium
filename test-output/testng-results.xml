@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="30" total="42" passed="12">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Groups Tests" duration-ms="112" started-at="2021-12-14T18:55:47 ICT" finished-at="2021-12-14T18:55:48 ICT">
+    <groups>
+      <group name="test2">
+        <method signature="TestNGTest1.test2(int)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test2" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+        <method signature="TestNGTest2.test2(java.lang.String)[pri:1, instance:com.itms.training.java.selenium.tests.TestNGTest2@3fd7a715]" name="test2" class="com.itms.training.java.selenium.tests.TestNGTest2"/>
+      </group> <!-- test2 -->
+      <group name="test3">
+        <method signature="TestNGTest2.test3(java.lang.String)[pri:2, instance:com.itms.training.java.selenium.tests.TestNGTest2@30a3107a]" name="test3" class="com.itms.training.java.selenium.tests.TestNGTest2"/>
+      </group> <!-- test3 -->
+      <group name="regression">
+        <method signature="TestNGTest1.test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+        <method signature="TestNGTest1.test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@2bbf4b8b]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+        <method signature="TestNGTest2.test3(java.lang.String)[pri:2, instance:com.itms.training.java.selenium.tests.TestNGTest2@30a3107a]" name="test3" class="com.itms.training.java.selenium.tests.TestNGTest2"/>
+      </group> <!-- regression -->
+      <group name="smoke">
+        <method signature="TestNGTest1.test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+        <method signature="TestNGTest1.test2(int)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test2" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+        <method signature="TestNGTest2.test1(java.lang.String,java.lang.String)[pri:3, instance:com.itms.training.java.selenium.tests.TestNGTest2@3fd7a715]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest2"/>
+        <method signature="TestNGTest2.test2(java.lang.String)[pri:1, instance:com.itms.training.java.selenium.tests.TestNGTest2@3fd7a715]" name="test2" class="com.itms.training.java.selenium.tests.TestNGTest2"/>
+        <method signature="TestNGTest1.test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@2bbf4b8b]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+      </group> <!-- smoke -->
+      <group name="test1">
+        <method signature="TestNGTest1.test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+        <method signature="TestNGTest2.test1(java.lang.String,java.lang.String)[pri:3, instance:com.itms.training.java.selenium.tests.TestNGTest2@3fd7a715]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest2"/>
+        <method signature="TestNGTest1.test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@2bbf4b8b]" name="test1" class="com.itms.training.java.selenium.tests.TestNGTest1"/>
+      </group> <!-- test1 -->
+    </groups>
+    <test name="regression" duration-ms="99" started-at="2021-12-14T18:55:47 ICT" finished-at="2021-12-14T18:55:48 ICT">
+      <class name="com.itms.training.java.selenium.tests.TestNGTest1">
+        <test-method status="PASS" signature="test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@2bbf4b8b]" name="test1" duration-ms="7" started-at="2021-12-14T18:55:47 ICT" description="TestNGTest1.test1" data-provider="DataProvider1" finished-at="2021-12-14T18:55:47 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@2bbf4b8b]" name="test1" duration-ms="2" started-at="2021-12-14T18:55:47 ICT" description="TestNGTest1.test1" data-provider="DataProvider1" finished-at="2021-12-14T18:55:47 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[b]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@2bbf4b8b]" name="test1" duration-ms="1" started-at="2021-12-14T18:55:47 ICT" description="TestNGTest1.test1" data-provider="DataProvider1" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+      </class> <!-- com.itms.training.java.selenium.tests.TestNGTest1 -->
+      <class name="com.itms.training.java.selenium.tests.TestNGTest2">
+        <test-method status="PASS" signature="test3(java.lang.String)[pri:2, instance:com.itms.training.java.selenium.tests.TestNGTest2@30a3107a]" name="test3" duration-ms="1" started-at="2021-12-14T18:55:48 ICT" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Optional]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test3 -->
+      </class> <!-- com.itms.training.java.selenium.tests.TestNGTest2 -->
+    </test> <!-- regression -->
+    <test name="smoke" duration-ms="112" started-at="2021-12-14T18:55:47 ICT" finished-at="2021-12-14T18:55:48 ICT">
+      <class name="com.itms.training.java.selenium.tests.TestNGTest1">
+        <test-method status="PASS" signature="test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test1" duration-ms="9" started-at="2021-12-14T18:55:47 ICT" description="TestNGTest1.test1" data-provider="DataProvider1" finished-at="2021-12-14T18:55:47 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[a]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test1" duration-ms="1" started-at="2021-12-14T18:55:47 ICT" description="TestNGTest1.test1" data-provider="DataProvider1" finished-at="2021-12-14T18:55:47 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[b]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test1(java.lang.String)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test1" duration-ms="1" started-at="2021-12-14T18:55:48 ICT" description="TestNGTest1.test1" data-provider="DataProvider1" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[c]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test2(int)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test2" duration-ms="1" started-at="2021-12-14T18:55:48 ICT" description="TestNGTest1.test2" data-provider="DataProvider1" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method status="PASS" signature="test2(int)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test2" duration-ms="1" started-at="2021-12-14T18:55:48 ICT" description="TestNGTest1.test2" data-provider="DataProvider1" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method status="PASS" signature="test2(int)[pri:0, instance:com.itms.training.java.selenium.tests.TestNGTest1@26aa12dd]" name="test2" duration-ms="5" started-at="2021-12-14T18:55:48 ICT" description="TestNGTest1.test2" data-provider="DataProvider1" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+      </class> <!-- com.itms.training.java.selenium.tests.TestNGTest1 -->
+      <class name="com.itms.training.java.selenium.tests.TestNGTest2">
+        <test-method status="PASS" signature="test2(java.lang.String)[pri:1, instance:com.itms.training.java.selenium.tests.TestNGTest2@3fd7a715]" name="test2" duration-ms="0" started-at="2021-12-14T18:55:48 ICT" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[A]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method status="PASS" signature="test1(java.lang.String,java.lang.String)[pri:3, instance:com.itms.training.java.selenium.tests.TestNGTest2@3fd7a715]" name="test1" duration-ms="1" started-at="2021-12-14T18:55:48 ICT" finished-at="2021-12-14T18:55:48 ICT">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+      </class> <!-- com.itms.training.java.selenium.tests.TestNGTest2 -->
+    </test> <!-- smoke -->
+  </suite> <!-- Groups Tests -->
+</testng-results>

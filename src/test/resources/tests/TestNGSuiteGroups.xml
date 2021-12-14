@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" parallel="tests"  name="Groups Tests">
+    <parameter name="suite-param-1" value="1"></parameter>
+    <parameter name="suite-param-2" value="2"></parameter>
+
+    <test name="smoke" >
+        <parameter name="test-param-A" value="A" />
+        <parameter name="test-param-B" value="B" />
+        <groups>
+            <run>
+                <include name="smoke"></include>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.itms.training.java.selenium.tests"></package>
+        </packages>
+    </test>
+    <test name="regression" >
+        <parameter name="test-param-A" value="A" />
+        <parameter name="test-param-B" value="B" />
+        <groups>
+            <run>
+                <include name="regression"></include>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.itms.training.java.selenium.tests"></package>
+        </packages>
+    </test><!-- Test -->
+</suite> <!-- Suite -->

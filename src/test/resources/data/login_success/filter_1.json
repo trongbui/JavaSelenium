@@ -1,9 +1,0 @@
-{
-  "cityName": "Singapore",
-  "checkinDate" : "04/12/2021",
-  "checkoutDate" : "06/12/2021",
-  "rooms" : 3,
-  "adults" : 3,
-  "childs" : [6, 9],
-  "nationality" : "Viet Nam"
-}
