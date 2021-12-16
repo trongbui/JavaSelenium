@@ -42,9 +42,6 @@ public class BaseTest {
         }
     }
 
-
-    // This is new function
-
-
+    // Update code to fix Bug-001
 
 }
