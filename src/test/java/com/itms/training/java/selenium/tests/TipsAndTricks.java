@@ -121,5 +121,10 @@ public class TipsAndTricks extends BaseTestNGTest {
                 "You have done a right click");
     }
 
-    // Update test
+    @Test
+    public void iframeTests() {
+        webDriver.get("https://demoqa.com/frames");
+        webDriver.switchTo().frame(webDriver.findElement(By.id("frame1")));
+        webDriver.findElement(By.id("sampleHeading"));
+    }
 }
