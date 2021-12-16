@@ -12,6 +12,8 @@ import java.time.Duration;
 
 public class BaseTest {
 
+    // Dong add new feature
+
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWait;
     private final int pageLoadTimeout = 60;
