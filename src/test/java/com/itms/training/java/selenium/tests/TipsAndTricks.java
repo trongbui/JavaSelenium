@@ -121,5 +121,5 @@ public class TipsAndTricks extends BaseTestNGTest {
                 "You have done a right click");
     }
 
-
+    // Update test
 }
