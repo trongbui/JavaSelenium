@@ -1,8 +1,18 @@
 package com.itms.training.java.selenium.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import java.time.Duration;
+
 public class BaseTestNGTest {
+
+    protected WebDriver webDriver;
+    protected WebDriverWait webDriverWait;
+    private final int pageLoadTimeout = 60;
+    private final int timeOut = 60;
 
     @BeforeSuite
     public void beforeSuite() {
@@ -19,9 +29,15 @@ public class BaseTestNGTest {
         System.out.println("------ Before Class ------");
     }
 
+    @Parameters("browserName")
     @BeforeMethod
-    public void beforeMethod() {
+    public void beforeMethod(String browserName) {
         System.out.println("-------- Before Method --------");
+        webDriver = WebDriverManager.getInstance(browserName).create();
+        webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(pageLoadTimeout));
+        webDriver.manage().window().maximize();
+
+        webDriverWait = new WebDriverWait(webDriver, Duration.ofSeconds(timeOut));
     }
 
     @AfterMethod
