@@ -17,6 +17,7 @@ import java.util.List;
 
 public class EndToEndTests extends BaseTest {
 
+    // Dan add new feature
 
     @Test(dataProvider = "FeatureHotelTestDataProvider", dataProviderClass = HotelCardDataProviders.class)
     public void hotelBooking(Account account, HotelSearchFilter filter, List<HotelCard> expectedHotelCards) throws ParseException {
