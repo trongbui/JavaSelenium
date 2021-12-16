@@ -42,6 +42,6 @@ public class BaseTest {
         }
     }
 
-    // Update code to fix Bug-001
+    // Update code to fix Bug-002
 
 }
