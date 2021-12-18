@@ -11,7 +11,7 @@ public class BaseTestNGTest {
 
     protected WebDriver webDriver;
     protected WebDriverWait webDriverWait;
-    private final int pageLoadTimeout = 60;
+    private final int pageLoadTimeout = 120;
     private final int timeOut = 60;
 
     @BeforeSuite
@@ -43,6 +43,7 @@ public class BaseTestNGTest {
     @AfterMethod
     public void afterMethod() {
         System.out.println("-------- After Method --------");
+        webDriver.quit();
     }
 
     @AfterClass
